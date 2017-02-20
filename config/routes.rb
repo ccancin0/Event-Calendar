@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 	
+  resources :events
 	# Set the default page for the web app.
   	root to: 'welcome#index'
 
