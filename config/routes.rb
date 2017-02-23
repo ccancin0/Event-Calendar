@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 	
+  resources :calendars
+  resources :categories
   resources :events
 	# Set the default page for the web app.
   	root to: 'welcome#index'
