@@ -9,6 +9,7 @@
   </head>
 
   <body>
+  <%= render 'layouts/header' %>
   		<% if user_signed_in? %>
 
   		<p>Hello, <%= current_user.first_name %> - <%= link_to "Sign_out", destroy_user_session_path, :method => 'delete' %></p>
@@ -17,6 +18,9 @@
   		<br>
 
   		<% end %>
+
+
+
 
     <%= yield %>
   </body>
