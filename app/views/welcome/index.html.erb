@@ -32,9 +32,15 @@
 
           </form> -->
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to 'Home', root_path %></li>
-            <li><%= link_to 'Sign In', new_user_session_path %></li>
-            <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <% if user_signed_in? %>
+              <li><a>Welcome, <%= current_user.first_name %></a></li>
+              <li><%= link_to 'My Calendar', root_path %></li>
+              <li><%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
+            <% else %>
+              <li><%= link_to 'Home', root_path %></li>
+              <li><%= link_to 'Sign In', new_user_session_path %></li>
+              <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+            <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -222,9 +228,5 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
-
-	  <div class="container">
-    	<%= yield %>
-    </div>
   </body>
 </html>
