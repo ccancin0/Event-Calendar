@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 	
+  devise_for :users, controllers: {registrations: "registrations" }
   resources :events
 	# Set the default page for the web app.
   	root to: 'welcome#index'
