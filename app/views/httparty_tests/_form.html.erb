@@ -1,0 +1,17 @@
+<%= form_for(httparty_test) do |f| %>
+  <% if httparty_test.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(httparty_test.errors.count, "error") %> prohibited this httparty_test from being saved:</h2>
+
+      <ul>
+      <% httparty_test.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

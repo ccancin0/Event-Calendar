@@ -7,20 +7,26 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    #@categories = Category.all
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
+    @category = CategoryEvent.where("event_id = ?", @event.id)
   end
 
   # GET /events/new
   def new
     @event = Event.new
+    @events = Event.all
+    @categories = Category.all
   end
 
   # GET /events/1/edit
   def edit
+    @events = Event.all
+    @categories = Category.all
   end
 
   # POST /events
@@ -30,6 +36,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        flash[:alert] = "You must be an admin to edit this project."
+        CategoryEvent.create(event_id: @event.id, category_id: event_params["category_id"])
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
@@ -44,6 +52,7 @@ class EventsController < ApplicationController
   def update
     respond_to do |format|
       if @event.update(event_params)
+        CategoryEvent.create(event_id: @event.id, category_id: event_params["category_id"])
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else

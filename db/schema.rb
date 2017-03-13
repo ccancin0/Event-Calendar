@@ -10,6 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 20170307200624) do
+
+  create_table "calendars", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_events", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_category_events_on_category_id"
+    t.index ["event_id"], name: "index_category_events_on_event_id"
+  end
+
+  # create_table "category_events", force: :cascade do |t|
+  #   t.integer  "event_id"
+  #   t.integer  "category_id"
+  #   t.datetime "created_at",  null: false
+  #   t.datetime "updated_at",  null: false
+  #   t.index ["category_id"], name: "index_category_events_on_category_id"
+  #   t.index ["event_id"], name: "index_category_events_on_event_id"
+  # end
+  
 ActiveRecord::Schema.define(version: 20170310224448) do
 
   create_table "events", force: :cascade do |t|
@@ -21,6 +52,10 @@ ActiveRecord::Schema.define(version: 20170310224448) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "httparty_tests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
