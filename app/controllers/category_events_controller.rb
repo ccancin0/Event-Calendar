@@ -15,6 +15,8 @@ class CategoryEventsController < ApplicationController
   # GET /category_events/new
   def new
     @category_event = CategoryEvent.new
+    @events = Event.all
+    @categories = Category.all
   end
 
   # GET /category_events/1/edit

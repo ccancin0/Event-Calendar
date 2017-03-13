@@ -12,13 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :event_id %>
-    <%= f.text_field :event_id %>
+    <%= f.label :event_id %><br>
+    <%= f.collection_select(:event_id, @events, :id, :title, prompt:true) %>
   </div>
-
   <div class="field">
-    <%= f.label :category_id %>
-    <%= f.text_field :category_id %>
+    <%= f.label :category_id %><br>
+    <%= f.collection_select(:category_id, @categories, :id, :title, prompt:true) %>
   </div>
 
   <div class="actions">

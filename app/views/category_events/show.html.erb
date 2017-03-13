@@ -2,12 +2,12 @@
 
 <p>
   <strong>Event:</strong>
-  <%= @category_event.event %>
+  <%= @category_event.event.title %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @category_event.category %>
+  <%= @category_event.category.title %>
 </p>
 
 <%= link_to 'Edit', edit_category_event_path(@category_event) %> |

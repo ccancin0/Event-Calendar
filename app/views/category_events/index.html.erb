@@ -14,8 +14,8 @@
   <tbody>
     <% @category_events.each do |category_event| %>
       <tr>
-        <td><%= category_event.event %></td>
-        <td><%= category_event.category %></td>
+        <td><%= category_event.event.title %></td>
+        <td><%= category_event.category.title %></td>
         <td><%= link_to 'Show', category_event %></td>
         <td><%= link_to 'Edit', edit_category_event_path(category_event) %></td>
         <td><%= link_to 'Destroy', category_event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
