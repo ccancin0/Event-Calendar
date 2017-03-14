@@ -8,6 +8,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.where("title LIKE ?", "%#{params[:search]}%")
     #@categories = Category.all
+    @events = Event.where(start: params[:start]..params[:end])
   end
 
   # GET /events/1
@@ -33,7 +34,6 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-
     respond_to do |format|
       if @event.save
         flash[:alert] = "You must be an admin to edit this project."
@@ -66,10 +66,6 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -80,6 +76,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :date, :start_time, :end_time)
+      params.require(:event).permit(:title, :description, :date_range, :start, :end, :color)
     end
 end

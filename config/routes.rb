@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :categories
   devise_for :users, controllers: {registrations: "registrations" }
   resources :events
+  #get '/show', to: 'calendar#index' as: 'index'
 	# Set the default page for the web app.
-  	root to: 'welcome#index'
+  root to: 'welcome#index'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
