@@ -59,3 +59,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'annotate'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'httparty'

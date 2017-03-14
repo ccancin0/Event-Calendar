@@ -36,6 +36,11 @@
     <%= f.time_select :end_time %>
   </div>
 
+  <div class="field">
+    <%= f.label :category_id %>
+    <%= f.collection_select(:category_ids, @categories, :id, :title, prompt:true) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

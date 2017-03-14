@@ -1,0 +1,1 @@
+json.partial! "httparty_tests/httparty_test", httparty_test: @httparty_test
