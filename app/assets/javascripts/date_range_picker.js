@@ -5,9 +5,9 @@ date_range_picker = function() {
         timePicker: true,
         timePickerIncrement: 30,
         alwaysShowCalendars: true
-    }, function(start, end, label) {
-      $('.start_hidden').val(start.format('YYYY-MM-DD HH:mm'));
-      $('.end_hidden').val(end.format('YYYY-MM-DD HH:mm'));
+    }, function(start_time, end_time, label) {
+      $('.start_time_hidden').val(start_time.format('YYYY-MM-DD HH:mm'));
+      $('.end_time_hidden').val(end_time.format('YYYY-MM-DD HH:mm'));
     });
   })
 };

@@ -14,9 +14,9 @@
 
 class Event < ApplicationRecord
   validates :title, presence: true
-  attr_accessor :date
+  attr_accessor :date_range
 
   def all_day_event?
-    self.start == self.start_time.midnight && self.end == self.end_time.midnight ? true : false
+    self.start_time == self.start_time.midnight && self.end_time == self.end_time.midnight ? true : false
   end
 end

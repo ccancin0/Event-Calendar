@@ -14,8 +14,13 @@ initialize_calendar = function() {
       eventLimit: true,
       events: '/events.json',
 
-      select: function(start, end) {
-        $.getScript('/events/new', function() {});
+      select: function(start_time, end_time) {
+        $.getScript('/events/new', function() {
+          $('#event_date').val(moment(start_time).format("MM/DD/YYYY HH:mm") + ' - ' + moment(end_time).format("MM/DD/YYYY HH:mm"))
+          date_range_picker();
+          $('.start_time_hidden').val(moment(start_time).format('YYYY-MM-DD HH:mm'));
+          $('.end_time_hidden').val(moment(end_time).format('YYYY-MM-DD HH:mm'));
+        });
 
         calendar.fullCalendar('unselect');
       },
@@ -24,8 +29,8 @@ initialize_calendar = function() {
         event_data = {
           event: {
             id: event.id,
-            start: event.start.format(),
-            end: event.end.format()
+            start_time: event.start_time.format(),
+            end_time: event.end_time.format()
           }
         };
         $.ajax({
@@ -36,7 +41,12 @@ initialize_calendar = function() {
       },
 
       eventClick: function(event, jsEvent, view) {
-        $.getScript(event.edit_url, function() {});
+        $.getScript(event.edit_url, function() {
+          $('#event_date').val(moment(event.start_time).format("MM/DD/YYYY HH:mm") + ' - ' + moment(event.end_time).format("MM/DD/YYYY HH:mm"))
+          date_range_picker();
+          $('.start_time_hidden').val(moment(event.start_time).format('YYYY-MM-DD HH:mm'));
+          $('.end_time_hidden').val(moment(event.end_time).format('YYYY-MM-DD HH:mm'));
+        });
       }
     });
   })
