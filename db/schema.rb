@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20170220071350) do
     t.string   "title"
     t.string   "description"
     t.date     "date"
-    t.time     "start_time"
-    t.time     "end_time"
+    t.datetime "start"
+    t.datetime "end"
     t.string   "color"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
