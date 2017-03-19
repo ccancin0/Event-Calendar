@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-	
   resources :httparty_tests
   resources :category_events
   resources :calendars
