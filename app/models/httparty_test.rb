@@ -20,9 +20,11 @@ class HttpartyTest < ApplicationRecord
  end
 
  def create_events
-   test = HttpartyTest.new
+   meetup_api_url = 'https://memgo-api.herokuapp.com/calendar.json'
+   test = HttpartyTest.get(meetup_api_url)
    test.post.each do |posts|
      #p "Title: #{posts['title']} | Description: #{posts['description']}"
+     @httparty_tests = test.fetch('meetups')
      Event.create(title: posts['title'], description: posts['description'])
    end
  end

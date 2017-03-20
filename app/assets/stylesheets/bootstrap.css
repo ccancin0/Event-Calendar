@@ -4180,10 +4180,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-collapse {
-<<<<<<< HEAD
-=======
   float: right;
->>>>>>> full-calender
   padding-right: 15px;
   padding-left: 15px;
   overflow-x: visible;
@@ -4240,7 +4237,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .container-fluid > .navbar-header,
   .container > .navbar-collapse,
   .container-fluid > .navbar-collapse {
-    margin-right: 0;
+    margin-right: 15px;
     margin-left: 0;
   }
 }

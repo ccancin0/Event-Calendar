@@ -11,9 +11,9 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-
+#include httparty
 class Event < ApplicationRecord
-  has_and_belongs_to_many :categories
+  #has_and_belongs_to_many :categories
   validates :title, presence: true
   attr_accessor :date_range
 
