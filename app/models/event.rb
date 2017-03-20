@@ -14,4 +14,9 @@
 
 class Event < ApplicationRecord
   has_and_belongs_to_many :categories
+
+  def format_time(time)
+    time.in_time_zone("CET")
+    time.to_s(:time)
+  end
 end
