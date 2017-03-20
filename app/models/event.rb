@@ -14,4 +14,6 @@
 
 class Event < ApplicationRecord
   has_and_belongs_to_many :categories
+  validates :title, presence:true, uniqueness:true, length: {maximum: 200}
+  validates :description, presence:true, length: {maximum: 500}
 end
