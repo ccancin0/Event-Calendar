@@ -15,4 +15,8 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require bootstrap
+//= require social-share-button
+//= require moment
+//= require fullcalendar
+//= require daterangepicker
 //= require_tree .

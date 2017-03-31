@@ -8,6 +8,11 @@ class WelcomeController < ApplicationController
   	# else
   	# 	redirect_to new_user_session_path
   	# end
+
   	@events = Event.where("title LIKE ?", "%#{params[:search]}%")
   end
+
+  def calendar
+  end
+
 end
