@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
+
   before_action :authenticate_user!
   # require 'json'
   # require 'pp'
+
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
