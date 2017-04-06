@@ -10,6 +10,14 @@
 #
 
 class CategoryEvent < ApplicationRecord
-  #belongs_to :event
+  belongs_to :event
   belongs_to :category
+
+  def get_event_id
+    return event_id
+  end
+
+  def get_category_id
+    return category_id
+  end
 end
