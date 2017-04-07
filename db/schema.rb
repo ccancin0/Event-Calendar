@@ -23,13 +23,6 @@ ActiveRecord::Schema.define(version: 20170320020038) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories_events", force: :cascade do |t|
-    t.integer  "event_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "category_events", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "category_id"
@@ -43,8 +36,6 @@ ActiveRecord::Schema.define(version: 20170320020038) do
     t.string   "title"
     t.string   "description"
     t.date     "date"
-    t.time     "start_time"
-    t.time     "end_time"
     t.datetime "start"
     t.datetime "end"
     t.string   "color"

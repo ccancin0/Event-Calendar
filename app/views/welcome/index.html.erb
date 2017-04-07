@@ -54,8 +54,8 @@
                           <td><%= event.title %></td>
                           <td><%= event.description %></td>
                           <td><%= event.date %></td>
-                          <td><%= event.format_time(event.start_time) %></td>
-                          <td><%= event.format_time(event.end_time) %></td>
+                          <td><%= event.format_time(event.start) %></td>
+                          <td><%= event.format_time(event.end) %></td>
 
                           <td><%= link_to 'Show', event %></td>
                           <td><%= link_to 'Edit', edit_event_path(event) %></td>
