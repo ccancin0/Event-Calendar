@@ -6,10 +6,11 @@
 #  title       :string
 #  description :string
 #  date        :date
-#  start_time  :time
-#  end_time    :time
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  start       :datetime
+#  end         :datetime
+#  color       :string
 #
 
 require 'test_helper'

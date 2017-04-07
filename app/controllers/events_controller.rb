@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # require 'json'
   # require 'pp'
 
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :heart]
 
   # GET /events
   # GET /events.json
@@ -12,7 +12,17 @@ class EventsController < ApplicationController
     # @events = HTTParty.get('https://api.meetup.com/find/events/?allMeetups=false&keywords=University+of+Memphis&radius=50&userFreeform=Memphis%2C+TN&mcId=z37501&mcName=Memphis%2C+TN&eventFilter=my',
     # :headers =>{'Content-Type' => 'application/json'})
     #@categories = Category.all
-    @events = Event.where(start: params[:start]..params[:end])
+    #@events = Event.where(start: params[:start]..params[:end])
+    @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+  end
+
+  def heart
+    @event = Event.find(params[:id])
+    if !current_user.liked? @event
+      @event.liked_by current_user
+    elsif current_user.liked? @event
+      @event.unliked_by current_user
+    end
   end
 
   # GET /events/1
@@ -24,8 +34,8 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    # @events = Event.all
-    # @categories = Category.all
+    #@events = Event.all
+    #@categories = Category.all
   end
 
   # GET /events/1/edit
@@ -38,19 +48,19 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    @event.save
+    #@event.save
 
-    # respond_to do |format|
-    #   if @event.save
-    #     flash[:alert] = "You must be an admin to edit this project."
-    #     CategoryEvent.create(event_id: @event.id, category_id: event_params["category_id"])
-    #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
-    #     format.json { render :show, status: :created, location: @event }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @event.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    respond_to do |format|
+      if @event.save
+        #flash[:alert] = "You must be an admin to edit this project."
+        #CategoryEvent.create(event_id: @event.id, category_id: event_params["category_id"])
+        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: @event }
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /events/1
