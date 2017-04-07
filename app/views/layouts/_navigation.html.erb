@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Student Event Calendar</a>
+      <a class="navbar-brand" href="welcome_root_pat">Student Event Calendar</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,15 +18,12 @@
         <% if user_signed_in? %>
           <li><a><strong>Welcome, <%= current_user.first_name %></strong></a></li>
           <li><%= link_to 'My Calendar', welcome_calendar_path %></li>
-          <li><%= link_to 'Events',  events_path %></li>
+          <li><%= link_to 'Home', root_path %></li>
           <li><%= link_to 'My RSVP',  rsvps_path %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
         <% else %>
-          <li><%= link_to 'Calendar', welcome_calendar_path %></li>
-          <li><%= link_to 'Home', root_path %></li>
-          <li><%= link_to 'Events',  events_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+          <li class="signUp"><%= link_to 'Sign Up', new_user_registration_path %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

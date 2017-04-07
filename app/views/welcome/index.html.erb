@@ -2,123 +2,112 @@
 <html>
   <body>
     <div class="container">
-        <h1>Welcome to Student Event Calendar</h1>
+        <h1 style="position: relative; padding-left: 80px;"><strong>Welcome to Student Event Calendar</strong></h1>
     </div>
     <!-- Page Content -->
         <div class="container">
-
             <div class="row">
-
                 <!-- Blog Post Content Column -->
                 <div class="col-lg-8">
-
                     <!-- Blog Post -->
-
                     <!-- Title -->
+                    <!-- <p><span class="glyphicon glyphicon-time"></span> <%= Time.now.strftime("%A, %B %d, %Y") %> </p> -->
+                    <% @events.each do |event| %>
                     <div>
-                    <h1>Events</h1>
+                    <h1><%= event.title %></h1>
                     </div>
+
                     <!-- Author -->
                     <p class="lead">
-                        by <a href="#">Start Bootstrap</a>
+                        by <a href="#"> SECalender </a>
                     </p>
-
                     <hr>
 
                     <!-- Date/Time -->
-                    <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
 
+                    <% if event.start == '00:00:00' %>
+                      <p><span class="glyphicon glyphicon-time"></span> TBA </p>
+                    <% else %>
+                      <p><span class="glyphicon glyphicon-time"></span><%= event.start %></p>
+                    <% end %>
                     <hr>
-
                     <!-- Preview Image -->
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-
                     <hr>
 
                     <!-- Post Content -->
-                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+                    <p class="lead"><%= event.description %></p>
 
                     <hr>
-
-                    <!-- Event Comments -->
-
-                    <!-- Comments Form -->
-                    <div class="well">
-                        <h4>Leave a Comment:</h4>
-                        <form role="form">
-                            <div class="form-group">
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
+                          <div class="well">
+                              <h4>Leave a Comment:</h4>
+                              <form role="form">
+                                  <div class="form-group">
+                                      <textarea class="form-control" rows="3"></textarea>
+                                  </div>
+                                  <button type="submit" class="btn btn-primary">Submit</button>
+                                  <div class="social-share-button"><%= social_share_button_tag(event.title) %></div>
+                              </form>
+                          </div>
+                    <% end %>
 
                     <hr>
-
                     <!-- Posted Comments -->
 
                     <!-- Comment -->
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            <!-- <img class="media-object" src="http://placehold.it/64x64" alt=""> -->
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">Start Bootstrap
-                                <small>August 25, 2014 at 9:30 PM</small>
+                            <!-- <h4 class="media-heading">Start Bootstrap -->
+                                <!-- <small>August 25, 2014 at 9:30 PM</small> -->
                             </h4>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            <!-- Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. -->
                         </div>
                     </div>
-
                     <!-- Comment -->
                     <div class="media">
                         <a class="pull-left" href="#">
-                            <img class="media-object" src="http://placehold.it/64x64" alt="">
+                            <!-- <img class="media-object" src="http://placehold.it/64x64" alt=""> -->
                         </a>
                         <div class="media-body">
-                            <h4 class="media-heading">Start Bootstrap
-                                <small>August 25, 2014 at 9:30 PM</small>
+                            <!-- <h4 class="media-heading">Start Bootstrap -->
+                                <!-- <small>August 25, 2014 at 9:30 PM</small> -->
                             </h4>
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            <!-- Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. -->
+
                             <!-- Nested Comment -->
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" src="http://placehold.it/64x64" alt="">
+                                    <!-- <img class="media-object" src="http://placehold.it/64x64" alt=""> -->
                                 </a>
                                 <div class="media-body">
-                                    <h4 class="media-heading">Nested Start Bootstrap
-                                        <small>August 25, 2014 at 9:30 PM</small>
+                                    <!-- <h4 class="media-heading">Nested Start Bootstrap -->
+                                        <!-- <small>August 25, 2014 at 9:30 PM</small> -->
                                     </h4>
-                                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                    <!-- Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. -->
                                 </div>
                             </div>
+
                             <!-- End Nested Comment -->
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Blog Sidebar Widgets Column -->
                 <div class="col-md-4">
-
                     <!-- Blog Search Well -->
                     <div class="well">
                         <h4>Event Search</h4>
                         <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                            </span>
+                          <%= form_tag root_path, :method => 'get' do %>
+                            <%= text_field_tag :search, params[:search] %>
+                            <%= submit_tag "Go" %>
+                            <% end %>
                         </div>
                         <!-- /.input-group -->
                     </div>
-
                     <!-- Blog Categories Well -->
                     <div class="well">
                         <h4>Event Categories</h4>
@@ -152,18 +141,15 @@
                     </div>
 
                     <!-- Side Widget Well -->
-                    <div class="well">
+                    <!-- <div class="well">
                         <h4>Side Widget Well</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                    </div>
-
+                    </div> -->
                 </div>
-
             </div>
+
             <!-- /.row -->
-
             <hr>
-
             <!-- Footer -->
             <footer>
                 <div class="row">
@@ -173,14 +159,12 @@
                 </div>
                 <!-- /.row -->
             </footer>
-
-        </div>
+        </div> -->
         <!-- /.container -->
+        <!-- <footer style="width: 100%; height: 257.2px; background-color: #b84d45; padding: 50px 0; background-image: url(assets/bg.png);"></footer> -->
 
-        <!--<footer style="width: 100%; height: 257.2px; background-color: #b84d45; padding: 50px 0; background-image: url(assets/bg.png);"></footer>
         <!-- jQuery -->
         <!-- <script src="js/jquery.js"></script> -->
-
         <!-- Bootstrap Core JavaScript -->
         <!-- <script src="js/bootstrap.js"></script> -->
       </body>
