@@ -4,6 +4,9 @@
 
 <%=@httparty_tests.create_events %>
 
+<!-- <%=@httparty_tests.create_events.each do |x| %>
+  <li><%= "Title: #{x['name']} | Description: #{x['description']}" %></li>
+<% end %> -->
 <br>
 
 <%= link_to 'New Httparty Test', new_httparty_test_path %>
