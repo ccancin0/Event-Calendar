@@ -17,28 +17,6 @@ ActiveRecord::Schema.define(version: 20170406160537) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categories_events", force: :cascade do |t|
-    t.integer  "event_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  create_table "category_events", force: :cascade do |t|
-    t.integer  "event_id"
-    t.integer  "category_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_category_events_on_category_id"
-    t.index ["event_id"], name: "index_category_events_on_event_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
