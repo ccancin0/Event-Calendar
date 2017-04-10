@@ -22,6 +22,7 @@
 
 class Event < ApplicationRecord
   acts_as_votable
+
   #has_and_belongs_to_many :categories
   # validates :title, presence: true
   # validates :title, presence:true, uniqueness:true, length: {maximum: 200}

@@ -7,8 +7,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+
+
       </button>
-      <a class="navbar-brand" href="welcome_root_pat">Student Event Calendar</a>
+      <ul class="nav navbar-nav navbar-left" >
+      <li><%= link_to 'STUDENT EVENT CALENDAR', root_path %></li>
+
+      </ul>
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -23,7 +29,7 @@
           <li><%= link_to 'My RSVP',  rsvps_path %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, :method => 'delete' %></li>
         <% else %>
-          <li><%= link_to 'Calendar', welcome_calendar_path %></li>
+          <!-- <li><%= link_to 'Calendar', welcome_calendar_path %></li> -->
           <li><%= link_to 'Home', root_path %></li>
           <!-- <li><%= link_to 'Events',  events_path %></li> -->
           <li><%= link_to 'Sign In', new_user_session_path %></li>
