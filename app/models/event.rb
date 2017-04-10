@@ -17,6 +17,7 @@ class Event < ApplicationRecord
   # validates :title, presence: true
   # validates :title, presence:true, uniqueness:true, length: {maximum: 200}
   # validates :description, presence:true, length: {maximum: 500}
+
   attr_accessor :date_range
 
   def all_day_event?

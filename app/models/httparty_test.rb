@@ -12,11 +12,7 @@ require 'httparty'
 
 class HttpartyTest < ApplicationRecord
   include HTTParty
-# https://www.meetup.com/meetup_api/docs/
-#  def posts
-#    self.class.get('/calendar.json')
-#  end
-# end
+
   def create_events
    base_uri = 'https://memgo-api.herokuapp.com/calendar.json'
    response = HttpartyTest.get(base_uri)
@@ -32,25 +28,5 @@ class HttpartyTest < ApplicationRecord
      Event.create(title: x['name'], description: x['description'], color: "black", start: loaf, end: loaf)
    end
  end
-   #response.parsed_response
 
-  #  logger.debug(response['id'])
- #   response.each do |posts|
- #     Event.create(title: posts['title'], description: posts['description'])
- #   end
- # end
-
-  # def initialize(service, page)
-  #   @options = {query: {site: service}}
-  # end
-  #
-  # def events
-  #   self.class.get('', @options)
-  # end
-
-
-
-
- #puts test.post
-# end
- end
+end
