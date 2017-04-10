@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :calendars
   resources :categories
   devise_for :users, controllers: {registrations: "registrations" }
-  resources :events
+  resources :events do
+    member do
+      put 'like' => 'events#heart'
+    end
+  end
   get 'welcome/calendar'
 	# Set the default page for the web app.
   root to: 'welcome#index'

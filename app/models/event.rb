@@ -6,23 +6,20 @@
 #  title       :string
 #  description :string
 #  date        :date
-#  start_time  :time
-#  end_time    :time
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  start       :datetime
+#  end         :datetime
+#  color       :string
 #
-#include httparty
-class Event < ApplicationRecord
-  has_and_belongs_to_many :categories
 
-  def format_time(time)
-    time.in_time_zone("CET")
-    time.to_s(:time)
-  end
-  
-  validates :title, presence: true
-  validates :title, presence:true, uniqueness:true, length: {maximum: 200}
-  validates :description, presence:true, length: {maximum: 500}
+class Event < ApplicationRecord
+  acts_as_votable
+  #has_and_belongs_to_many :categories
+  # validates :title, presence: true
+  # validates :title, presence:true, uniqueness:true, length: {maximum: 200}
+  # validates :description, presence:true, length: {maximum: 500}
+
   attr_accessor :date_range
 
   def all_day_event?
