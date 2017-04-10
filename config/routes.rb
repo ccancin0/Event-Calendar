@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :statistics
   resources :rsvps
   resources :httparty_tests
   resources :category_events
