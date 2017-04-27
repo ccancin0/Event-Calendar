@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   # require 'json'
   # require 'pp'
 
@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     # :headers =>{'Content-Type' => 'application/json'})
     #@categories = Category.all
     #@events = Event.where(start: params[:start]..params[:end])
-    @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    #@events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
   end
 
   def heart
@@ -31,7 +31,19 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    # if current_user.admin
+    #   @event = Event.new
+    # else
+    #   flash[:alert] = "You must be an admin to create an event."
+    #   redirect_to calendar
+    # end
+
+
+
+      # test = ProjectsUser.where("user_id = ? AND project_id = ?", current_login.id, params[:id])
+      # if test.pluck(:is_admin) == [false]
+      #   flash[:alert] = "You must be an admin to edit this project."
+      #   redirect_to user_profile_index_path
   end
 
   # GET /events/1/edit
@@ -42,17 +54,17 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = Event.new(event_params)
-    #@event.save
+    @event.save
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @event.save
+    #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
+    #     format.json { render :show, status: :created, location: @event }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @event.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /events/1
