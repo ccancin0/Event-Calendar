@@ -51,8 +51,10 @@
                               </form>
                           </div>
 
+
                           <p><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></p>
                           <p class = "likes-count" ><%= event.get_upvotes.size %></p>
+
 
                     <% end %>
 
