@@ -19,9 +19,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if !current_user.liked? @event
       @event.liked_by current_user
+      #redirect_to root_path
     elsif current_user.liked? @event
       @event.unliked_by current_user
+      #redirect_to root_path
     end
+  end
+
+  def rsvp
+    @event = Event.find(params[:id])
+    @event.upvote_from current_user #working on this
+    redirect_to root_path
   end
 
   # GET /events/1
@@ -31,19 +39,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    # if current_user.admin
-    #   @event = Event.new
-    # else
-    #   flash[:alert] = "You must be an admin to create an event."
-    #   redirect_to calendar
-    # end
-
-
-
-      # test = ProjectsUser.where("user_id = ? AND project_id = ?", current_login.id, params[:id])
-      # if test.pluck(:is_admin) == [false]
-      #   flash[:alert] = "You must be an admin to edit this project."
-      #   redirect_to user_profile_index_path
+    @event = Event.new
   end
 
   # GET /events/1/edit
@@ -53,8 +49,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-    @event.save
+    # if current_user.admin == true
+      @event = Event.new(event_params)
+      @event.save
+    # else
+    #   flash.now[:notice] = "You must be an admin to create an event." #why is this alert not working?
+    # end
 
     # respond_to do |format|
     #   if @event.save
