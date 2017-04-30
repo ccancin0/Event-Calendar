@@ -13,6 +13,11 @@ class EventsController < ApplicationController
     #@categories = Category.all
     #@events = Event.where(start: params[:start]..params[:end])
     @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+     marker.lat event.latitude
+     marker.lng event.longitude
+    end
   end
 
   def heart

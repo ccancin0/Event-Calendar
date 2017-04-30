@@ -66,3 +66,4 @@ gem 'acts_as_votable'
 # gem 'momentjs-rails'
 
 gem 'geocoder'
+gem 'gmaps4rails'
