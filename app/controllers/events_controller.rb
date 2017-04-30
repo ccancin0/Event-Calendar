@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   require 'prawn'
   before_action :set_event, only: [:show, :edit, :update, :destroy, :heart]
 
+
   # GET /events
   # GET /events.json
   def index
@@ -17,6 +18,11 @@ class EventsController < ApplicationController
       end
     end
     @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+     marker.lat event.latitude
+     marker.lng event.longitude
+    end
   end
 
   def heart
@@ -69,6 +75,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :date_range, :start, :end, :color)
+      params.require(:event).permit(:title, :description, :date_range, :start, :end, :address, :latitude, :longitude, :color)
     end
 end
