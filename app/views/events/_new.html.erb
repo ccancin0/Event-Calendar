@@ -1,13 +1,20 @@
-<div class="modal fade" id="new_event">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Create New Event</h4>
-      </div>
-      <div class="modal-body">
-          <%= render 'form', event: @event %>
+
+  <div class="modal fade" id="new_event">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <% if current_user.admin == true %>
+          <h4 class="modal-title">Create New Event</h4>
+          <% else %>
+          <h4 class="modal-title">You must be an admin to create an event.</h4>
+          <% end %>
+        </div>
+        <div class="modal-body">
+            <% if current_user.admin == true %>
+            <%= render 'form', event: @event %>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
