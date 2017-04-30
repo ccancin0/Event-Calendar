@@ -13,6 +13,11 @@ class EventsController < ApplicationController
     #@categories = Category.all
     #@events = Event.where(start: params[:start]..params[:end])
     #@events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+     marker.lat event.latitude
+     marker.lng event.longitude
+    end
   end
 
   def heart
@@ -49,22 +54,8 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    # if current_user.admin == true
-      @event = Event.new(event_params)
-      @event.save
-    # else
-    #   flash.now[:notice] = "You must be an admin to create an event." #why is this alert not working?
-    # end
-
-    # respond_to do |format|
-    #   if @event.save
-    #     format.html { redirect_to @event, notice: 'Event was successfully created.' }
-    #     format.json { render :show, status: :created, location: @event }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @event.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    @event = Event.new(event_params)
+    @event.save
   end
 
   # PATCH/PUT /events/1
@@ -87,6 +78,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :date_range, :start, :end, :color)
+      params.require(:event).permit(:title, :description, :date_range, :start, :end, :address, :latitude, :longitude, :color)
     end
 end
