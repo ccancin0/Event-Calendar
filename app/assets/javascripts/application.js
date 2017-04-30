@@ -19,4 +19,6 @@
 //= require moment
 //= require fullcalendar
 //= require daterangepicker
+//= require underscore
+//= require gmaps/google
 //= require_tree .
