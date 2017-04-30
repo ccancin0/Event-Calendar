@@ -2,16 +2,20 @@ class EventsController < ApplicationController
   # before_action :authenticate_user!
   # require 'json'
   # require 'pp'
-
+  require 'prawn'
   before_action :set_event, only: [:show, :edit, :update, :destroy, :heart]
 
   # GET /events
   # GET /events.json
   def index
-    # @events = HTTParty.get('https://api.meetup.com/find/events/?allMeetups=false&keywords=University+of+Memphis&radius=50&userFreeform=Memphis%2C+TN&mcId=z37501&mcName=Memphis%2C+TN&eventFilter=my',
-    # :headers =>{'Content-Type' => 'application/json'})
-    #@categories = Category.all
-    #@events = Event.where(start: params[:start]..params[:end])
+    @event = Event.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        pdf = EventPdf.new(@event)
+        send_data pdf.render, filename: "#{@event}.pdf", type: 'application/pdf', disposition: "inline"
+      end
+    end
     @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
   end
 

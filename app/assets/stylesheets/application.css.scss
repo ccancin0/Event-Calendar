@@ -29,6 +29,23 @@ body {
 	//background-color:#ADD8E6;
 	// background-color: #ADD8E6;
 }
+// $size: 14em;
+//
+// .social-share-button {
+//   .ssb-icon {
+//     background-size: $size $size;
+//     height: $size;
+//     width: $size;
+//   }
+// }
+#likeBtn {
+	position: relative;
+	float: right;
+	padding-left: 15px;
+}
+ .likes-count {
+	 text-align: center;
+ }
 
 .social-share-button {
 		position: relative;
@@ -40,7 +57,7 @@ body {
 }
 
 // .signUp {
-// 	background-color: #778899;
+// 	border: 3px solid #D0F0C0;
 // }
 
 h1 {
