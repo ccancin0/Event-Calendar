@@ -14,7 +14,7 @@
                     <!-- <p><span class="glyphicon glyphicon-time"></span> <%= Time.now.strftime("%A, %B %d, %Y") %> </p> -->
                     <% @events.each do |event| %>
                     <div>
-                    <h1><%= event.title %></h1>
+                    <h1><%= link_to event.title,event %></h1>
                     </div>
 
                     <!-- Author -->
