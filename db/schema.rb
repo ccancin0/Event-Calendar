@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430045610) do
+ActiveRecord::Schema.define(version: 20170501032732) do
+
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -20,11 +21,11 @@ ActiveRecord::Schema.define(version: 20170430045610) do
     t.string   "title"
     t.string   "description"
     t.date     "date"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.datetime "start"
     t.datetime "end"
     t.string   "color"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
     t.integer  "cached_votes_total",      default: 0
     t.integer  "cached_votes_score",      default: 0
     t.integer  "cached_votes_up",         default: 0
@@ -50,13 +51,10 @@ ActiveRecord::Schema.define(version: 20170430045610) do
   end
 
   create_table "rsvps", force: :cascade do |t|
-    t.string   "title"
-    t.string   "description"
-    t.date     "date"
-    t.time     "start_time"
-    t.time     "end_time"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "event_id"
   end
 
   create_table "statistics", force: :cascade do |t|

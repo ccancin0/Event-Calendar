@@ -13,10 +13,16 @@
 
   <tbody>
     <% @events.each do |event| %>
-      <tr>
+    <tr>
         <td><%= event.title %></td>
         <td><%= event.get_upvotes.size %> </td>
-
+        <td>
+          <% rsvp = Rsvp.where("event_id = ?", event.id) %>
+          <% rsvp.each do |r| %>
+            <% user = User.where("id = ?", r.user_id).first %>
+            <%= user.email %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -25,3 +31,7 @@
 <br>
 
 <!-- <%= link_to 'New Statistic', new_statistic_path %> -->
+<!-- @userIDs = Rsvp.where("event_id = ?", event.id).user_id
+@users = Users.none
+@userIDs.each do |user|
+@users += user -->
