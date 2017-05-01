@@ -44,6 +44,7 @@
 </p>
 
 
+
 <p><td><%= link_to 'Back to Calendar', events_path %></td></p>
 <td><%= link_to 'Back to Home', root_path %></td>
 <hr>
@@ -61,14 +62,14 @@ handler = Gmaps.build('Google');
 handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
   markers = handler.addMarkers([
     {
-       
+
       "lat": <%= @event.latitude %>,
       "lng": <%= @event.longitude %>,
       "picture": {
         "url": "http://people.mozilla.com/~faaborg/files/shiretoko/firefoxIcon/firefox-32.png",
         "width":  32,
         "height": 32
-       
+
       },
       "infowindow": "hello!"
     }

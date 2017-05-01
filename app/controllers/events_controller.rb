@@ -33,8 +33,16 @@ class EventsController < ApplicationController
 
   def rsvp
     @event = Event.find(params[:id])
-    @event.upvote_from current_user #working on this
-    redirect_to root_path
+    @rsvp = Rsvp.where("user_id = ? AND event_id = ?", current_user.id, @event.id)# rescue nil
+    if @rsvp.blank?
+      Rsvp.create(user_id: current_user.id, event_id: @event.id)
+      flash[:notice] = "Your RSVP was successful."
+      #redirect_to root_path
+    else
+      Rsvp.destroy(@rsvp)
+      flash[:notice] = "Your RSVP has been removed."
+      #redirect_to root_path
+    end
   end
 
   # GET /events/1

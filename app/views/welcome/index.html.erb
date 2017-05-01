@@ -38,7 +38,7 @@
 
                     <!-- Post Content -->
                     <p class="lead"><%= event.description.html_safe %></p>
-
+                    <p><%= link_to 'Show', event %></p>
                     <hr>
                           <div class="well">
                               <h4>Leave a Comment:</h4>
@@ -51,9 +51,10 @@
                               </form>
                           </div>
 
+                          <p><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%>
+                            <%= link_to "RSVP", rsvp_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></p>
+                          <p class = "likes-count" ><%= event.get_upvotes.size %> </p>
 
-                          <p><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></p>
-                          <p class = "likes-count" ><%= event.get_upvotes.size %></p>
 
                     <% end %>
 

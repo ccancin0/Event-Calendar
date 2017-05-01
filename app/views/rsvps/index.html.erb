@@ -15,23 +15,21 @@
   </thead>
 
   <tbody>
-    <% @rsvps.each do |rsvp| %>
+    <% @events.each do |event| %>
       <tr>
-        <td><%= rsvp.title %></td>
-        <td><%= rsvp.description %></td>
-        <td><%= rsvp.date %></td>
-        <td><%= rsvp.start_time %></td>
-        <td><%= rsvp.end_time %></td>
-        <td><%= link_to 'Show', rsvp %></td>
-        <td><%= link_to 'Edit', edit_rsvp_path(rsvp) %></td>
-        <td><%= link_to 'Destroy', rsvp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= event.title %></td>
+        <td><%= event.description %></td>
+        <td><%= event.date %></td>
+        <td><%= event.start %></td>
+        <td><%= event.end %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></td>
+        <td class = "likes-count" ><%= event.get_upvotes.size %></td>
+        <td><%= link_to "RSVP", rsvp_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Rsvp', new_rsvp_path %>
-
-<%= link_to 'Back', root_path %>
