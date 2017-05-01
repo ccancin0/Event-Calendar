@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   # require 'json'
   # require 'pp'
 
@@ -12,7 +12,7 @@ class EventsController < ApplicationController
     # :headers =>{'Content-Type' => 'application/json'})
     #@categories = Category.all
     #@events = Event.where(start: params[:start]..params[:end])
-    @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+    #@events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
 
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
      marker.lat event.latitude
@@ -24,9 +24,17 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     if !current_user.liked? @event
       @event.liked_by current_user
+      #redirect_to root_path
     elsif current_user.liked? @event
       @event.unliked_by current_user
+      #redirect_to root_path
     end
+  end
+
+  def rsvp
+    @event = Event.find(params[:id])
+    @event.upvote_from current_user #working on this
+    redirect_to root_path
   end
 
   # GET /events/1
