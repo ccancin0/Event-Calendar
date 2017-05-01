@@ -35,7 +35,7 @@
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                     <hr>
 
-                    <div><%= link_to "PDF File", events_path(event.title, format: 'pdf')%></div>
+                    <div><%= link_to "PDF File", pdf_event_path(event, format: 'pdf'), method: :get %></div>
                     <!-- Post Content -->
                     <p class="lead"><%= event.description.html_safe %></p>
                     <p><%= link_to 'Show', event %></p>

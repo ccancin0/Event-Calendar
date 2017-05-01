@@ -12,12 +12,19 @@ Rails.application.routes.draw do
       put 'like' => 'events#heart'
     end
   end
-  
+
   resources :events do
     member do
       put 'rsvp' => 'events#rsvp'
     end
   end
+
+  resources :events do
+    member do
+      get 'pdf' => 'events#pdf'
+    end
+  end
+
   get 'welcome/calendar'
   get 'events', to: 'events#index'
 	# Set the default page for the web app.
