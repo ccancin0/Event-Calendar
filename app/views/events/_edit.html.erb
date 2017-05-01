@@ -3,7 +3,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <% if current_user.admin == true %>
         <h4 class="modal-title">Edit Event</h4>
+        <% else %>
+        <h4 class="modal-title">View Event</h4>
+        <% end %>
       </div>
       <div class="modal-body">
         <%= render 'form', event: @event %>
