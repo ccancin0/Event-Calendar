@@ -1,7 +1,8 @@
 class EventPdf < Prawn::Document
   def initialize(event)
     super()
-    @events = event
-    text "hello \##{@events.event.title}"
+      text "\##{event.title}"
+      text "\##{event.description}".html_safe
+      text "\##{event.address}"
   end
 end

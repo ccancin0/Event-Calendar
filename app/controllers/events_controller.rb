@@ -9,19 +9,24 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @event = Event.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.pdf do
-        pdf = EventPdf.new(@event)
-        send_data pdf.render, filename: "#{@event}.pdf", type: 'application/pdf', disposition: "inline"
-      end
-    end
     @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
-
     @hash = Gmaps4rails.build_markers(@events) do |event, marker|
      marker.lat event.latitude
      marker.lng event.longitude
+    end
+
+    #@event = Event.find(2)
+    @events.each do |event|
+      respond_to do |format|
+        format.html
+        format.json
+        format.pdf do
+          pdf = EventPdf.new(event)
+          send_data pdf.render, filename: "event_#{event.id}.pdf", type: 'application/pdf', disposition: "inline"
+          return false
+        end
+      end
+      return false
     end
   end
 

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :statistics
   resources :rsvps
   resources :httparty_tests
@@ -11,7 +12,11 @@ Rails.application.routes.draw do
       put 'like' => 'events#heart'
     end
   end
+
+  resources :events do
+    end
   get 'welcome/calendar'
+  get 'events', to: 'events#index'
 	# Set the default page for the web app.
   root to: 'welcome#index'
 

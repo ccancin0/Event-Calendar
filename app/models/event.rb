@@ -22,10 +22,11 @@
 
 class Event < ApplicationRecord
   acts_as_votable
-
+  belongs_to :user
+  has_many :comments
   geocoded_by :address
   after_validation :geocode
-  
+
 
   #has_and_belongs_to_many :categories
   # validates :title, presence: true
