@@ -6,8 +6,27 @@ class StatisticsController < ApplicationController
   def index
     @statistics = Statistic.all
     @events = Event.all
+    @users = User.all
+    # userIDs = Rsvp.where("event_id = ?", event.id).user_id
+    # users = User.find(:all, :conditions => ["id in ?", userIDs]
     @rsvps = Rsvp.all
   end
+
+  # def getRsvps(event)
+  #
+  #
+  # end
+  # return @users
+  #
+  #   # @events = Event.all
+  #   # if params[:search] != nil && params[:search].size > 0
+  #   #   @events = Event.none
+  #   #   words = params[:search].split(' ')
+  #   #   words.each do |word|
+  #   #     @events += Event.where("title LIKE ? OR description LIKE ?", "%#{word}%", "%#{word}%")
+  #   #   end
+  #   # end
+  # end
 
   # GET /statistics/1
   # GET /statistics/1.json
