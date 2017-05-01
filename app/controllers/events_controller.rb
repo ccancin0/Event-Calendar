@@ -19,19 +19,18 @@ class EventsController < ApplicationController
      marker.lng event.longitude
     end
 
-    #@event = Event.find(2)
-    @events.each do |event|
+    @event = Event.find(params[:id])
+    #@events.each do |event|
       respond_to do |format|
         format.html
         format.json
         format.pdf do
-          pdf = EventPdf.new(event)
-          send_data pdf.render, filename: "event_#{event.id}.pdf", type: 'application/pdf', disposition: "inline"
-          return false
+          pdf = EventPdf.new
+          send_data pdf.render, filename: "event_#{@event.id}.pdf", type: 'application/pdf', disposition: "inline"
+          #return false
         end
       end
-      return false
-    end
+    #end
   end
 
   def heart

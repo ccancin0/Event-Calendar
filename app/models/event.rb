@@ -25,8 +25,6 @@
 
 class Event < ApplicationRecord
   acts_as_votable
-  belongs_to :user
-  has_many :comments
   geocoded_by :address
   after_validation :geocode
 
