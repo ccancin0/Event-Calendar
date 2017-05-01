@@ -10,32 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430232433) do
+ActiveRecord::Schema.define(version: 20170501032732) do
 
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "event_id"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_comments_on_event_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.date     "date"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
     t.datetime "start"
     t.datetime "end"
     t.string   "color"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.integer  "cached_votes_total",      default: 0
     t.integer  "cached_votes_score",      default: 0
     t.integer  "cached_votes_up",         default: 0
