@@ -1,10 +1,15 @@
 class RsvpsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_rsvp, only: [:show, :edit, :update, :destroy]
 
   # GET /rsvps
   # GET /rsvps.json
   def index
-    @rsvps = Rsvp.all
+    @rsvps = Rsvp.where("user_id = ?", current_user.id)
+    @events = Event.none
+    @rsvps.each do |r|
+      @events += Event.where("id = ?", r.event_id)
+    end
   end
 
   # GET /rsvps/1

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :comments
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :statistics
   resources :rsvps
   resources :httparty_tests
@@ -12,9 +12,12 @@ Rails.application.routes.draw do
       put 'like' => 'events#heart'
     end
   end
-
+  
   resources :events do
+    member do
+      put 'rsvp' => 'events#rsvp'
     end
+  end
   get 'welcome/calendar'
   get 'events', to: 'events#index'
 	# Set the default page for the web app.

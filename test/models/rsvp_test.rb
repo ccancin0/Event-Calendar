@@ -2,14 +2,11 @@
 #
 # Table name: rsvps
 #
-#  id          :integer          not null, primary key
-#  title       :string
-#  description :string
-#  date        :date
-#  start_time  :time
-#  end_time    :time
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id         :integer          not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer
+#  event_id   :integer
 #
 
 require 'test_helper'

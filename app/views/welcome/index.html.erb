@@ -14,7 +14,7 @@
                     <!-- <p><span class="glyphicon glyphicon-time"></span> <%= Time.now.strftime("%A, %B %d, %Y") %> </p> -->
                     <% @events.each do |event| %>
                     <div>
-                    <h1><%= event.title %></h1>
+                    <h1><%= link_to event.title,event %></h1>
                     </div>
 
                     <!-- Author -->
@@ -38,7 +38,7 @@
                     <div><%= link_to "PDF File", events_path(event.title, format: 'pdf')%></div>
                     <!-- Post Content -->
                     <p class="lead"><%= event.description.html_safe %></p>
-
+                    <p><%= link_to 'Show', event %></p>
                     <hr>
                           <div class="well">
                               <h4>Leave a Comment:</h4>
