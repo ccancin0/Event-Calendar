@@ -35,7 +35,7 @@
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                     <hr>
 
-                    <div><%= link_to "PDF File", events_path(event.title, format: 'pdf')%></div>
+                    <div><%= link_to "PDF File", pdf_event_path(event, format: 'pdf'), method: :get %></div>
                     <!-- Post Content -->
                     <p class="lead"><%= event.description.html_safe %></p>
                     <p><%= link_to 'Show', event %></p>
@@ -47,7 +47,7 @@
                                       <textarea class="form-control" rows="3"></textarea>
                                   </div>
                                   <button type="submit" class="btn btn-primary" id="comment">Submit</button>
-                                  <div id="likeBtn"><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%><p class ="likes-count" ><%= event.get_upvotes.size %></p></div>
+                                  <div id="likeBtn"><p> <%= link_to "RSVP", rsvp_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></p><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%><p class ="likes-count" ><%= event.get_upvotes.size %></p></div>
                                   <div class="social-share-button"><%= social_share_button_tag(event.title) %></div>
                               </form>
                           </div>
