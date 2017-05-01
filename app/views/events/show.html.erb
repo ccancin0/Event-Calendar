@@ -44,9 +44,12 @@
 </p>
 
 
+<p><td><%= link_to 'Back to Calendar', events_path %></td></p>
+<td><%= link_to 'Back to Home', root_path %></td>
+<hr>
+<p><%= link_to "Like", like_event_path(@event), method: :put, class: "btn btn-warning btn-xs"%></p>
+                          <p class = "likes-count" ><%= @event.get_upvotes.size %></p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', event_path %>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
