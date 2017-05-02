@@ -73,6 +73,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    commontator (4.11.1)
+      jquery-rails
+      rails (>= 3.1)
     concurrent-ruby (1.0.4)
     debug_inspector (0.0.2)
     devise (4.2.0)
@@ -243,6 +246,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.2)
+  commontator
   devise
   geocoder
   gmaps4rails

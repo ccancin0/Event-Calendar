@@ -1,4 +1,5 @@
 class HttpartyTestsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_httparty_test, only: [:show, :edit, :update, :destroy]
 
   # GET /httparty_tests
