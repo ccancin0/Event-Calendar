@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'category/index'
+  get 'category', to: 'category#index'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :statistics
