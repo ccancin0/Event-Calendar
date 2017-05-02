@@ -25,6 +25,7 @@
 
 class Event < ApplicationRecord
   acts_as_votable
+  acts_as_commontable
   geocoded_by :address
   after_validation :geocode
 

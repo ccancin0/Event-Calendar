@@ -31,6 +31,7 @@ class EventsController < ApplicationController
   #       end
   #     end
   #   end
+      #commontator_thread_show(@events)
    end
 
   def pdf
@@ -68,6 +69,10 @@ class EventsController < ApplicationController
       flash[:notice] = "Your RSVP has been removed."
       #redirect_to root_path
     end
+  end
+
+  def comment
+
   end
 
   # GET /events/1
