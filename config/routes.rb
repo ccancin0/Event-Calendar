@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-  get 'category/index'
+  get 'sports', to: 'category#sports'
+  get 'technology', to: 'category#technology'
+  get 'arts', to: 'category#arts'
+  get 'theater', to: 'category#theater'
+  get 'news', to: 'category#news'
+  get 'politics', to: 'category#politics'
+  get 'health', to: 'category#health'
+  get 'food', to: 'category#food'
+
+
+
+
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :statistics
