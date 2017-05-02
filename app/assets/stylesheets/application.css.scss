@@ -15,11 +15,12 @@
  *= require fullcalendar
  *= require daterangepicker
  *= require bootstrap
+ *= require commontator/application
 */
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 body {
 	// height: 100%;
 	background-image: url(../assets/bg4.jpg);
