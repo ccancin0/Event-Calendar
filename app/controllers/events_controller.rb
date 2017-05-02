@@ -20,15 +20,28 @@ class EventsController < ApplicationController
     end
 
     #@event = Event.find(params[:id])
-    @events.each do |event|
-      respond_to do |format|
-        format.html
-        format.json
-        format.pdf do
-          pdf = EventPdf.new(event)
-          send_data pdf.render, filename: "event_#{event.id}.pdf", type: 'application/pdf', disposition: "inline"
-          return false
-        end
+  #   @events.each do |event|
+  #     respond_to do |format|
+  #       format.html
+  #       format.json
+  #       format.pdf do
+  #         pdf = EventPdf.new(event)
+  #         send_data pdf.render, filename: "event_#{event.id}.pdf", type: 'application/pdf', disposition: "inline"
+  #         return false
+  #       end
+  #     end
+  #   end
+      #commontator_thread_show(@events)
+   end
+
+  def pdf
+    @event = Event.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf do
+        pdf = EventPdf.new(@event)
+        send_data pdf.render, filename: "event_#{@event.id}.pdf", type: 'application/pdf', disposition: "inline"
       end
     end
   end
@@ -56,6 +69,10 @@ class EventsController < ApplicationController
       flash[:notice] = "Your RSVP has been removed."
       #redirect_to root_path
     end
+  end
+
+  def comment
+
   end
 
   # GET /events/1

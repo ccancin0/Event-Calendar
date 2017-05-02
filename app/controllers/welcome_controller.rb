@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
      marker.lat event.latitude
      marker.lng event.longitude
     end
-
+    #commontator_thread_show(@events)
     # @events = Event.where("title LIKE ? OR description LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
   end
 
