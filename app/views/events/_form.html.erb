@@ -6,12 +6,14 @@
     <%= f.input :address %>
     <%= f.input :latitude %>
     <%= f.input :longitude %>
+    <%= f.input :category, as: :select, collection: [['Sports','Sports'],['Technology','Technology'],['Arts','Arts'],['Theater','Theater'],['News','News'],['Politics','Politics'],['Health','Health'],['Food','Food']] %>
     <%= f.input_field :start, as: :hidden, value: Date.today, class: 'form-control input-sm start_hidden' %>
     <%= f.input_field :end, as: :hidden, value: Date.today, class: 'form-control input-sm end_hidden' %>
     <%= f.input :color, as: :select, collection: [['Black','black'], ['Green','green'], ['Red','red']] %>
   </div>
 
   <div class="form-actions">
+      <%= link_to 'Show', event, class: 'btn' %>
     <% if current_user.admin == true %>
       <%= f.button :submit %>
       <%= link_to 'Delete',

@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20170502002955) do
-
   create_table "calendars", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -75,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170502002955) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "category"
     t.index ["cached_votes_down"], name: "index_events_on_cached_votes_down"
     t.index ["cached_votes_score"], name: "index_events_on_cached_votes_score"
     t.index ["cached_votes_total"], name: "index_events_on_cached_votes_total"

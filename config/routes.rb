@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'category/index'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :statistics
   resources :rsvps
@@ -27,6 +29,8 @@ Rails.application.routes.draw do
 
   get 'welcome/calendar'
   get 'events', to: 'events#index'
+
+  
 	# Set the default page for the web app.
   root to: 'welcome#index'
   mount Commontator::Engine => '/commontator/'
