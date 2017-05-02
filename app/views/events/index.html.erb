@@ -17,7 +17,7 @@
       <th>Like/Dislike</th>
       <th>RVSP </th>
       <th>Like Count</th>
-      
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -31,7 +31,7 @@
 
         <td><%= event.address%></td>
         <td><%= event.category%></td>
-      
+
         <td><p><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></p></td>
         <td><p><%= link_to "RSVP", rsvp_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></p></td>
         <td><p class = "likes-count" ><%= event.get_upvotes.size %></p></td>
@@ -42,6 +42,7 @@
         </p>
       </tr>
     <% end %>
+    <hr>
   </tbody>
   </div>
 </table>

@@ -25,17 +25,37 @@
 
                     <!-- Date/Time -->
 
-                    <% if event.start == '00:00:00' %>
+                    <% if event.start == "00:00:00 UTC" %>
                       <p><span class="glyphicon glyphicon-time"></span> TBA </p>
                     <% else %>
                       <p><span class="glyphicon glyphicon-time"></span><%= event.start %></p>
                     <% end %>
                     <hr>
                     <!-- Preview Image -->
-                    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                    <% if event.description.include? "lunch" %>
+                      <img class="img-responsive" src="../assets/lunch.png" alt="">
+                    <% elsif event.description.include? "Machine" %>
+                      <img class="img-responsive" src="../assets/techn.png" alt="">
+                    <% elsif event.description.include? "house" %>
+                        <img class="img-responsive" src="../assets/house.jpg" alt="">
+                    <% elsif event.description.include? "game" %>
+                        <img class="img-responsive" src="../assets/game.png" alt="">
+                    <% elsif event.description.include? "Meetup" %>
+                        <img class="img-responsive" src="../assets/meetup.jpg" alt="">
+                    <% else %>
+                      <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                    <% end %>
                     <hr>
 
-                    <div><%= link_to "PDF File", pdf_event_path(event, format: 'pdf'), method: :get %></div>
+                    <div><%= social_share_button_tag(event.title) %>
+                      <span id="likeBtn"><%= link_to "RSVP", rsvp_event_path(event), method: :put, class: "btn btn-success btn-xs"%>
+                        <%= link_to "PDF File", pdf_event_path(event, format: 'pdf'), method: :get, class: "btn btn-danger btn-xs" %>
+                          <%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%>
+                          <span class ="likes-count"><%= event.get_upvotes.size %></span></span>
+                    </div>
+
+
+
                     <!-- Post Content -->
                     <p class="lead"><%= event.description.html_safe %></p>
                     <p><%= link_to 'Show', event %></p>
@@ -47,8 +67,6 @@
                                       <textarea class="form-control" rows="3"></textarea>
                                   </div>
                                   <button type="submit" class="btn btn-primary" id="comment">Submit</button>
-                                  <div id="likeBtn"><p> <%= link_to "RSVP", rsvp_event_path(event), method: :put, class: "btn btn-warning btn-xs"%></p><%= link_to "Like", like_event_path(event), method: :put, class: "btn btn-warning btn-xs"%><p class ="likes-count" ><%= event.get_upvotes.size %></p></div>
-                                  <div class="social-share-button"><%= social_share_button_tag(event.title) %></div>
                               </form>
                           </div>
                     <% end %>
