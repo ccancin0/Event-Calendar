@@ -1,24 +1,19 @@
-# README
+# Student Event Calendar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+-This project provides a means for Memphis students and community members to keep up with events and activities around town. Whether you're into technology, sports, or just like good eats, this is the site to keep you connected and updated.
 
-Things you may want to cover:
+# About Student Event Calendar
 
-* Ruby version
+- https://www.youtube.com/embed/II_Ow32dKv4
 
-* System dependencies
+# Project Mentor
+- Daniel Pritchett
 
-* Configuration
+# Project Creators
+- Carlos Cancino
+- Sai Manikonda
+- Terrell Martin
+- Heather Duke
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Copyright
+- © Daniel Pritchett 2017
