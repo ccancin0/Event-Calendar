@@ -48,6 +48,7 @@
 <p><td><%= link_to 'Back to Calendar', events_path %></td></p>
 <td><%= link_to 'Back to Home', root_path %></td>
 <hr>
+<span id="likeBtn"><%= link_to "RSVP", rsvp_event_path(@event), method: :put, class: "btn btn-success btn-xs"%>
 <p><%= link_to "Like", like_event_path(@event), method: :put, class: "btn btn-warning btn-xs"%></p>
                           <p class = "likes-count" ><%= @event.get_upvotes.size %></p>
 
